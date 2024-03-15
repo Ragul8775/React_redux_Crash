@@ -1,12 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../features/todoSlice";
+import { removeTodo, toggleChecked } from "../features/todoSlice";
 
 const Todos = () => {
   // Notice the return statement here
   const todos = useSelector((state) => {
     return state.todos;
   });
+
   const dispatch = useDispatch();
 
   return (
@@ -16,8 +17,11 @@ const Todos = () => {
       <ul className="list-none">
         {todos.map((todo) => (
           <li
-            className="mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded"
+            className={`mt-4 flex justify-between items-center bg-zinc-800 px-4 py-2 rounded ${
+              todo.checked ? "line-through" : ""
+            }`}
             key={todo.id}
+            onClick={() => dispatch(toggleChecked(todo.id))}
           >
             <div className="text-white">{todo.text}</div>
             <button
