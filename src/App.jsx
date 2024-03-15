@@ -1,8 +1,9 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
 import background from "./assets/dark.jpg";
+import AddTodo from "./components/AddTodo";
+import Todos from "./components/Todos";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,8 +16,12 @@ function App() {
         backgroundSize: "cover",
       }}
     >
-      <div className="text-white border-slate-300 border-2 rounded-lg p-4">
-        <h2>To do List</h2>
+      <div
+        className="text-white rounded-lg p-4 "
+        style={{ background: "rgba(255,255,255,0.2)" }}
+      >
+        <AddTodo />
+        <Todos />
       </div>
     </div>
   );
